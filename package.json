@@ -1,0 +1,15 @@
+{
+  "name": "ec2-cpu-load-dashboard",
+  "version": "1.0.0",
+  "description": "Node.js app for observing and driving CPU load on a two-core EC2 instance.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
