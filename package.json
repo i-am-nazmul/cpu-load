@@ -2,6 +2,7 @@
   "name": "ec2-cpu-load-dashboard",
   "version": "1.0.0",
   "description": "Node.js app for observing and driving CPU load on a two-core EC2 instance.",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

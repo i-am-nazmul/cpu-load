@@ -1,6 +1,7 @@
-const os = require('os');
-const path = require('path');
-const { Worker } = require('worker_threads');
+import os from 'os';
+import path from 'path';
+import { pathToFileURL } from 'url';
+import { Worker } from 'worker_threads';
 
 class CpuLoadService {
   constructor(options = {}) {
@@ -22,10 +23,11 @@ class CpuLoadService {
       return;
     }
 
-    const workerPath = path.join(__dirname, '..', 'workers', 'cpuBurnWorker.js');
+    const workerPath = path.join(process.cwd(), 'src', 'workers', 'cpuBurnWorker.js');
+    const workerUrl = pathToFileURL(workerPath);
 
     this.workers = Array.from({ length: this.workerCount }, () => {
-      return new Worker(workerPath);
+      return new Worker(workerUrl, { type: 'module' });
     });
 
     this.running = true;
@@ -53,4 +55,4 @@ class CpuLoadService {
   }
 }
 
-module.exports = { CpuLoadService };
+export { CpuLoadService };

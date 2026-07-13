@@ -1,7 +1,11 @@
-const express = require('express');
-const path = require('path');
-const { CpuLoadService } = require('./services/cpuLoadService');
-const { CpuMonitor } = require('./services/cpuMonitor');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { CpuLoadService } from './services/cpuLoadService.js';
+import { CpuMonitor } from './services/cpuMonitor.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function createServer() {
   const app = express();
@@ -40,4 +44,4 @@ function createServer() {
   return app;
 }
 
-module.exports = { createServer };
+export { createServer };

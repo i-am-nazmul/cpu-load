@@ -1,4 +1,4 @@
-const os = require('os');
+import os from 'os';
 
 class CpuMonitor {
   constructor(sampleIntervalMs = 1000) {
@@ -61,4 +61,4 @@ class CpuMonitor {
   }
 }
 
-module.exports = { CpuMonitor };
+export { CpuMonitor };
