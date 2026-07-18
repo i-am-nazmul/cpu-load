@@ -1,6 +1,3 @@
-const loadState = document.getElementById('loadState');
-const workerCount = document.getElementById('workerCount');
-const totalCpu = document.getElementById('totalCpu');
 const coreMeters = document.getElementById('coreMeters');
 const startBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
@@ -41,9 +38,8 @@ function renderCoreMeters(values = []) {
 async function refreshStatus() {
   const status = await requestJson('/api/status');
 
-  loadState.textContent = status.loadRunning ? 'Running' : 'Idle';
-  workerCount.textContent = String(status.workerCount);
-  totalCpu.textContent = `${status.cpu.totalPercent.toFixed(1)}%`;
+  startBtn.disabled = status.loadRunning;
+  stopBtn.disabled = !status.loadRunning;
   renderCoreMeters(status.cpu.perCorePercent);
 }
 

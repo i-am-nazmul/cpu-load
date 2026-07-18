@@ -1,7 +1,9 @@
 import os from 'os';
 
 class CpuMonitor {
-  constructor(sampleIntervalMs = 1000) {
+  constructor(options = {}) {
+    const { sampleIntervalMs = 1000 } = options;
+
     this.sampleIntervalMs = sampleIntervalMs;
     this.intervalHandle = null;
     this.previousSnapshot = this.captureSnapshot();
