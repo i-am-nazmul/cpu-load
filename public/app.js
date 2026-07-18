@@ -1,4 +1,5 @@
 const coreMeters = document.getElementById('coreMeters');
+const instanceIdDisplay = document.getElementById('instanceIdDisplay');
 const startBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
 
@@ -38,6 +39,7 @@ function renderCoreMeters(values = []) {
 async function refreshStatus() {
   const status = await requestJson('/api/status');
 
+  instanceIdDisplay.textContent = status.instanceId || 'Local / Unknown';
   startBtn.disabled = status.loadRunning;
   stopBtn.disabled = !status.loadRunning;
   renderCoreMeters(status.cpu.perCorePercent);
